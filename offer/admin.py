@@ -5,6 +5,8 @@ from models import *
 @admin.register(Offer)
 class OfferAdmin(admin.ModelAdmin):
     list_display = [f.name for f in Offer._meta.get_fields()]
+    list_filter = ['status']
+    search_fields = ['id', 'prod_id']
 
 
 @admin.register(OfferDescription)
@@ -25,4 +27,5 @@ class OfferSettingAdmin(admin.ModelAdmin):
 @admin.register(OfferSource)
 class OfferSourceAdmin(admin.ModelAdmin):
     list_display = [f.name for f in OfferSource._meta.get_fields()]
+    list_filter = ['source_id']
 

@@ -7,6 +7,7 @@ class AffiliateAdmin(admin.ModelAdmin):
     list_display = [f.name for f in Affiliate._meta.get_fields()]
     view_on_site = False
     icon = '<i class="material-icons">account_circle</i>'
+    list_filter = ['status']
 
 
 @admin.register(AffiliateSetting)

@@ -65,12 +65,11 @@ class BlockSource(models.Model):
         db_table = 'block_source'
 
 
-
 class SettingAffiliateOfferPayout(models.Model):
     affiliate_id = models.IntegerField(blank=True, null=True)
     offer_id = models.IntegerField(blank=True, null=True)
     payout_value = models.DecimalField(max_digits=11, decimal_places=4, blank=True, null=True)
-    operator_id = models.IntegerField(blank=True, null=True)
+    operator_id = models.IntegerField(blank=True, null=True, editable=False)
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
 
@@ -84,7 +83,7 @@ class SettingAffiliateOfferPayout(models.Model):
 class SettingAffiliateOfferPayoutPecent(models.Model):
     affiliate_id = models.IntegerField(blank=True, null=True)
     pecent = models.DecimalField(max_digits=11, decimal_places=4, blank=True, null=True)
-    operator_id = models.IntegerField(blank=True, null=True)
+    operator_id = models.IntegerField(blank=True, null=True, editable=False)
     description = models.CharField(max_length=255, blank=True, default='')
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
@@ -180,7 +179,7 @@ class SourceSetting(models.Model):
     source_id = models.IntegerField()
     account_cap_daily = models.DecimalField(max_digits=11, decimal_places=4, blank=True, null=True)
     conversion_cap_daily = models.IntegerField(blank=True, null=True)
-    operator_id = models.IntegerField(blank=True, null=True)
+    operator_id = models.IntegerField(blank=True, null=True, editable=False)
     description = models.CharField(max_length=255, blank=True, default='')
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)

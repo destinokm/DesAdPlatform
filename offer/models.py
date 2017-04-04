@@ -4,6 +4,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Offer(models.Model):
     prod_id = models.IntegerField(blank=True, null=True)
     prod = models.CharField(max_length=255, blank=True, null=True)
@@ -14,6 +15,9 @@ class Offer(models.Model):
     class Meta:
         managed = False
         db_table = 'offer'
+
+    def __unicode__(self):
+        return '%s' % self.id
 
 
 class OfferDescription(models.Model):
@@ -76,10 +80,12 @@ class OfferSource(models.Model):
     source_id = models.IntegerField()
     source_offer_id = models.CharField(max_length=255, blank=True, null=True)
     tracking_link = models.CharField(max_length=511, blank=True, null=True)
-    sign_code = models.CharField(max_length=255, blank=True, null=True)
+    sign_code = models.CharField(max_length=255, blank=True, null=True, editable=False)
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
 
     class Meta:
         managed = False
         db_table = 'offer_source'
+
+
